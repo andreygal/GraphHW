@@ -1,10 +1,19 @@
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by andre on 5/17/2016.
  */
-public class MyGraph extends Graph {
+public class MyGraph<T> extends Graph<T> {
+
+    private Map<T, Integer> vertexMap;
+    private Vector<VertexInfo<T>> vertexInfo;
+    private int numVertices;
+    private int numEdges;
+    private Stack<Integer> availStack;
+    private int getvInfoIndex(T vertex){
+        return vertexMap.get(vertex);
+    }
+
     @Override
     public void clear() {
 
@@ -16,37 +25,44 @@ public class MyGraph extends Graph {
     }
 
     @Override
-    public void eraseEdge(Object v1, Object v2) {
+    public void eraseEdge(T v1, T v2) {
 
     }
 
     @Override
-    public void eraseVertex(Object v) {
+    public void eraseVertex(T v) {
 
     }
 
     @Override
-    public int getWeight(Object v1, Object v2) {
+    public int getWeight(T v1, T v2) {
         return 0;
     }
 
-    @Override
-    public Set getNeighbors(Object v) {
+
+    public Set<T> getNeighbors(T v) {
+        Set<T> adjVert;
+        int pos = getvInfoIndex(v);
+        if(pos == -1)
+            return null;
+        Set<Neighbor>
+
+
         return null;
     }
 
     @Override
-    public int inDegree(Object v) {
+    public int inDegree(T v) {
         return 0;
     }
 
     @Override
-    public void insertEdge(Object v1, Object v2, int w) {
+    public void insertEdge(T v1, T v2, int w) {
 
     }
 
     @Override
-    public void insertVertex(Object v) {
+    public void insertVertex(T v) {
 
     }
 
@@ -56,14 +72,15 @@ public class MyGraph extends Graph {
     }
 
     @Override
-    public int outDegree(Object v1) {
+    public int outDegree(T v1) {
         return 0;
     }
 
     @Override
-    public void setWeight(Object v1, Object v2, int w) {
+    public void setWeight(T v1, T v2, int w) {
 
     }
+
 
     @Override
     public Iterator begin() {
